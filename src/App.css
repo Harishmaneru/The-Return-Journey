@@ -1,38 +1,129 @@
-.App {
+
+.registration-container {
   text-align: center;
+  margin: 50px 450px;
+  border: 1px solid #ccc;  
+  border-radius: 5px;  
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  background-color: #cfeac1; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.form-field {
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.form-field.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button {
+  background-color: #4CAF50;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; /* Adjust font size as needed */
 }
 
-.App-link {
-  color: #61dafb;
+/* Button hover effect */
+.button:hover {
+  background-color: #45a049;
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px; 
 }
 
-@keyframes App-logo-spin {
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.form-field.active {
+  animation: fadeIn 0.5s ease;
+}
+/* game styles */
+/* GreenLightRedLight.css */
+
+.game-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  cursor: pointer;
+  margin: 20px auto;
+  transition: background-color 0.3s ease;
+}
+
+.box.red {
+  background-color: red;
+}
+
+.start-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.message {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.game-over {
+  color: red;
+}
+
+.you-win {
+  color: green;
+}
+
+.score,
+.timer {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
 }
