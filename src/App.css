@@ -1,13 +1,20 @@
-
 .registration-container {
   text-align: center;
-  margin: 50px 450px;
-  border: 1px solid #ccc;  
-  border-radius: 5px;  
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
-  padding: 20px; 
-  background-color: #cfeac1; 
+  margin: 50px auto;  
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;      
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #cfeac1;
+  max-width: 400px;  
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    margin: 30px auto;  
+    padding: 15px;  
+  }
 }
+
 
 form {
   max-width: 400px;
