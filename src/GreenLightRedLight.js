@@ -40,9 +40,8 @@ function GreenLightRedLight() {
   }, [state]);
 
   console.log(n);
-
   const handleBoxClick = () => {
-    if (gameStarted && !isGameOver && isClickable) { // Check if it's clickable
+    if (gameStarted && !isGameOver && isClickable) {
       if (boxColor === 'red') {
         setIsGameOver(true);
       } else {
@@ -51,29 +50,32 @@ function GreenLightRedLight() {
         if (newScore === n) {
           setIsGameOver(true);
         }
+        setIsClickable(false);
+        setBoxColor('red'); // Change the color to red immediately
+        setTimeout(() => {
+          setIsClickable(true);
+          setBoxColor('green'); // Change the color back to green after a short delay
+        }, 25);
       }
-      setIsClickable(false); // Disable clickability during color change
     }
   };
 
   useEffect(() => {
     let interval;
-
+  
     if (gameStarted && !isGameOver) {
       interval = setInterval(() => {
-        setBoxColor((prevColor) => (prevColor === 'red' ? 'green' : 'red')); // Toggle between red and green
+        setBoxColor((prevColor) => (prevColor === 'red' ? 'green' : 'red'));  
         setIsClickable(true); // Re-enable clickability when the color changes
       }, getRandomInterval());
-
-      setTimeout(() => {
-        clearInterval(interval);
-        setIsGameOver(true);
-      }, yRef.current * 1000); // Access the mutable reference using .current
+    } else {
+      clearInterval(interval); // Clear the interval when the game is over
     }
-
-    return () => {
+  
+    setTimeout(() => {
       clearInterval(interval);
-    };
+      setIsGameOver(true);
+    }, yRef.current * 1000); // Access the mutable reference using .current
   }, [gameStarted, isGameOver]);
 
   useEffect(() => {
@@ -97,7 +99,7 @@ function GreenLightRedLight() {
   return (
     <div className="game-container">
       {isGameOver && score === n && <div className="message">You win!</div>}
-      {isGameOver && score !== n && <div className="message">Game Over! You Lost the game</div>}
+      {isGameOver && score !== n && <div className="message">Game Over! You lost the game</div>}
       {!isGameOver && gameStarted && (
         <div
           className={`box ${boxColor}`}
